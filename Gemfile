@@ -32,6 +32,7 @@ gem 'bulma-rails', '~> 0.9.1'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 gem 'figaro', '~> 1.2'
 gem 'devise'
+gem 'faker', '~> 2.15', '>= 2.15.1' 
 
 
 group :development, :test do
