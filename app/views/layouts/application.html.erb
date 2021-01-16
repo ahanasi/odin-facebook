@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OdinFacebook</title>
+    <title>Farcebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,8 +11,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <div class="notification is-primary is-light" style="border-radius: 0; margin-bottom: 0;">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="notification is-danger is-light" style="border-radius: 0; margin-bottom: 0;">
+        <p class="subtitle alert"><%= alert %></p>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
