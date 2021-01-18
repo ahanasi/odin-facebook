@@ -1,0 +1,31 @@
+<div class="column">
+  <nav class="panel">
+    <p class="panel-heading">People You May Know</p>
+    <% @users.each do |user| %>
+      <div class="panel-block">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-32x32">
+              <img src="https://bulma.io/images/placeholders/64x64.png" class="is-rounded">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= user.name %></strong>
+              </p>
+              <p>
+                <small>><%= friendship_status(@current_user, user) %></small>
+              </p>
+              <p>
+                <% unless Friendship.exists?(@current_user, user) %>
+                  <%= link_to "Add Friend", friendships_path(name: user.name), controller: "friendships", action: "create", method: :post, :confirm => "Send friend request to #{user.name}?", class: "button is-link" %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    <% end %>
+  </nav>
+</div>

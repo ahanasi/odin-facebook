@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  helper :friendships
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    @users = User.all_except(current_user)
   end
 
   # GET /posts/1
