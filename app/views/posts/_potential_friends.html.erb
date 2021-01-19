@@ -41,7 +41,7 @@
                 <strong><%= user.name %></strong>
               </p>
               <p>
-                <small>><%= friendship_status(@current_user, user) %></small>
+                <small><%= friendship_status(@current_user, user) %></small>
               </p>
               <p>
                 <% unless Friendship.exists?(@current_user, user) %>

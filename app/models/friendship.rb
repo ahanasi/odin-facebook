@@ -1,4 +1,4 @@
-require "pry"
+require 'pry'
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
@@ -6,7 +6,7 @@ class Friendship < ApplicationRecord
   scope :accepted, -> { where('status = ?', 'Accepted').order('name ASC') }
   scope :pending, -> { where('status = ?', 'Pending').order('created_at DESC') }
   scope :requested, -> { where('status = ?', 'Requested').order('created_at DESC') }
-  
+
   validates_presence_of :user_id, :friend_id
 
   def self.exists?(user, friend)
@@ -14,11 +14,11 @@ class Friendship < ApplicationRecord
   end
 
   def self.request(user, friend)
-    unless (user == friend) || Friendship.exists?(user, friend)
-      transaction do
-        create(user: user, friend: friend, status: 'Pending')
-        create(user: friend, friend: user, status: 'Requested')
-      end
+    return if (user == friend) || Friendship.exists?(user, friend)
+
+    transaction do
+      create(user: user, friend: friend, status: 'Pending')
+      create(user: friend, friend: user, status: 'Requested')
     end
   end
 
@@ -31,8 +31,8 @@ class Friendship < ApplicationRecord
 
   def self.breakup(user, friend)
     transaction do
-      destroy(find_by_user_id_and_friend_id(user, friend))
-      destroy(find_by_user_id_and_friend_id(friend, user))
+      destroy(find_by_user_id_and_friend_id(user, friend).id)
+      destroy(find_by_user_id_and_friend_id(friend, user).id)
     end
   end
 

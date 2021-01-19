@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    
     <% if flash[:notice] %>
       <div class="notification is-primary is-light" style="border-radius: 0; margin-bottom: 0;">
         <p class="notice"><%= notice %></p>
@@ -22,5 +23,9 @@
       </div>
     <% end %>
     <%= yield %>
+    <p class="control">
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+    </p>
+
   </body>
 </html>

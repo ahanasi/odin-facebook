@@ -7,7 +7,7 @@
 <% @user.pending_friends.each do |pending_friend| %>
 <tr>
     <td><%= link_to pending_friend.name, user_path(pending_friend) %></td>
-    <td><%= link_to "Cancel request", { :controller => "friendship", :action => "cancel", :id => pending_friend.name } %></td>
+    <td><%= link_to "Cancel request", cancel_friendships_path(name: pending_friend.name), controller: "friendships", action: "cancel", method: :delete %></td>
 </tr>
 <% end %>
 </table>
@@ -20,7 +20,7 @@
 <% @user.requested_friends.each do |requester| %>
 <tr>
     <td><%= link_to requester.name, user_path(requester) %></td>
-    <td><%= link_to "Accept",:controller => "friendship", :action => "accept", method: :post, :id => requester.name %> / <%= link_to "Decline", { :controller => "friendship", :action => "decline", method: :post, :id => requester.name } %>
+    <td><%= link_to "Accept", accept_friendships_path(name: requester.name), controller: "friendships", action: "accept", method: :put %> / <%= link_to "Decline", decline_friendships_path(name: requester.name), controller: "friendships", action: "decline", method: :delete %>
 </tr>
 <% end %>
 </table>
@@ -33,6 +33,7 @@
 <% @user.friends.each do |friend| %>
 <tr>
     <td><%= link_to friend.name, user_path(friend) %></td>
+    <td><%= link_to "Unfriend", delete_friendships_path(name: friend.name) %></td>
 </tr>
 <% end %>
 </table>
