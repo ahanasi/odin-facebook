@@ -2,6 +2,11 @@ require "pry"
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
+
+  scope :accepted, -> { where('status = ?', 'Accepted').order('name ASC') }
+  scope :pending, -> { where('status = ?', 'Pending').order('created_at DESC') }
+  scope :requested, -> { where('status = ?', 'Requested').order('created_at DESC') }
+  
   validates_presence_of :user_id, :friend_id
 
   def self.exists?(user, friend)
