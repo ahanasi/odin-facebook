@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
-    @users = User.all_except(current_user)
+    @users = User.all_except(current_user).select{ |u| !Friendship.exists?(current_user, u) }.sample(3)
   end
 
   # GET /posts/1
