@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order('created_at DESC')
+    @posts = Post.joins(:user, user: :friends).all.order('created_at DESC')
     @post = Post.new
     @users = User.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
   end

@@ -9,5 +9,13 @@
     top: 0;
     bottom: 0;
  }
+ #post-input {
+    border: none;
+    border-color: transparent;
+    box-shadow: none;
+ }
+ body {
+    height: 100vh;
+ }
 
  @import "bulma";
