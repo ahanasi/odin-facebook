@@ -1,0 +1,7 @@
+var modal = $("#post-content");
+modal.find(".modal-content").html("<%= j (render 'new') %>");
+modal.addClass("is-active");
+modal.find(".modal-background").click(function(e){
+  e.preventDefault();
+  modal.removeClass('is-active');
+});
