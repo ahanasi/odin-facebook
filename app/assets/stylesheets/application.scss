@@ -14,8 +14,16 @@
     border-color: transparent;
     box-shadow: none;
  }
- body {
-    height: 100vh;
+ html, body {
+   height: 100vh;
+ }
+ button.dropdown-item {
+    background-color: white;
+    border: none;
+ }
+ button.dropdown-item:hover{
+    background-color: whitesmoke;
+    cursor: pointer;
  }
 
- @import "bulma";
+ @import "bulma"; 

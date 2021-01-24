@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-background-light">
   <head>
     <title>Farcebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="has-background-light">
+  <body>
 
     <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
       <nav class="navbar columns m-1" role="navigation" aria-label="main navigation">
@@ -89,4 +89,36 @@
     <% end %>
     <%= yield %>
   </body>
+  <script>
+    $(document).ready(function() {
+      var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
+
+      if ($dropdowns.length > 0) {
+        $dropdowns.forEach(function ($el) {
+          $el.addEventListener('click', function (event) {
+            event.stopPropagation();
+            $el.classList.toggle('is-active');
+          });
+        });
+
+        document.addEventListener('click', function (event) {
+          closeDropdowns();
+        });
+      }
+
+      function closeDropdowns() {
+        $dropdowns.forEach(function ($el) {
+          $el.classList.remove('is-active');
+        });
+      }
+
+      // Functions
+
+      function getAll(selector) {
+        var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+        return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+      }
+    }
+  </script>
 </html>
