@@ -62,13 +62,13 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+                <%= link_to current_user, class: "button is-rounded pl-3 pr-3", data: { turbolinks: false } do %>
+                  <figure class="image is-24x24 mr-2 ml-0">
+                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                  </figure>  
+                  <%= current_user.name %>
+                <% end %>
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "button is-info" %>
               </div>
             </div>
           </div>
@@ -87,13 +87,23 @@
         <p class="subtitle alert"><%= alert %></p>
       </div>
     <% end %>
-    <%= yield %>
+    
+    <section class="section">
+      <div class="container">
+        <div class="columns is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
+          <%= render "layouts/sidebar" %>
+          <%= yield %>
+          <%= render "layouts/potential_friends" %>
+        </div>
+      </div>
+    </section>
   </body>
   <script>
-    $(document).ready(function() {
+    function() {
       var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
       if ($dropdowns.length > 0) {
+
         $dropdowns.forEach(function ($el) {
           $el.addEventListener('click', function (event) {
             event.stopPropagation();
@@ -112,13 +122,13 @@
         });
       }
 
-      // Functions
-
-      function getAll(selector) {
-        var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
-
-        return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
-      }
     }
+
+    function getAll(selector) {
+      var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+
+      return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+    }
+
   </script>
 </html>

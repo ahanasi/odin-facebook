@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users
-  resources :users
-  root "posts#index"
+  resources :users do
+    member do
+      get :posts
+    end
+  end
+  root 'posts#index'
 end
