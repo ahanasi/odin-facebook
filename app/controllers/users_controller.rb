@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show; end
 
   def posts
-    @posts = @user.posts
+    @posts = @user.posts.sort_by{|e| e[:updated_at]}.reverse! 
   end
 
   private
