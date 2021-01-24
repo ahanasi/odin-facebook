@@ -15,9 +15,9 @@
     <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
       <nav class="navbar columns m-1" role="navigation" aria-label="main navigation">
         <div class="navbar-brand column is-2">
-          <a class="navbar-item" href="https://bulma.io">
+          <%= link_to root_path, class: "navbar-item", data: { turbolinks: false } do %>
             <%= image_tag("full_brand.png", :alt => "brand logo") %>
-          </a>
+          <% end %>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>

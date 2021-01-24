@@ -36,7 +36,7 @@
     <ul class="menu-list">
       <% current_user.friends.each do |user| %>
         <li class="pt-2 pb-2">
-          <%= link_to user_path(user) do %>
+          <%= link_to user_path(user), data: { turbolinks: false } do %>
           <article class="media">
             <div class="media-left">
               <figure class="image is-48x48">

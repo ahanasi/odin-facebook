@@ -11,4 +11,17 @@ class User < ApplicationRecord
   has_many :friends, -> { Friendship.accepted }, through: :friendships
   has_many :pending_friends, -> { Friendship.pending }, through: :friendships, source: :friend
   has_many :requested_friends, -> { Friendship.requested }, through: :friendships, source: :friend
+
+  def relevant_posts
+    relevant_posts = []
+    friends.each do |f|
+      f.posts.each do |p|
+        relevant_posts << p
+      end
+    end
+    posts.each do |p|
+      relevant_posts << p
+    end
+    relevant_posts
+  end
 end
