@@ -1,4 +1,4 @@
-require "pry"
+require 'pry'
 class CommentsController < ApplicationController
   before_action :find_commentable, only: :create
 
@@ -7,15 +7,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @commentable.comments.build(comment_params)
-    if @commentable.save
-        binding.pry
-      if @commentable.class.name == 'Post'
-        redirect_to @commentable
-      else
-        redirect_to Post.find(@commentable.commentable_id)
-      end
-    end
+    @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
+    return unless @comment.save
+
+    redirect_to post_path(parent_post_or_comment)
   end
 
   private

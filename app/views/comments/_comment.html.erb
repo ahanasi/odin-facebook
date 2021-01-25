@@ -1,11 +1,39 @@
-<li>
-    <%= comment.content %> - 
-    <%= form_with(model: [comment, Comment.new]) do |f| %>
-      <%= f.text_field :content, placeholder: "Write a reply..." %><br/>
-    <% end %>
-  <ul>
+<article class="media">
+    <figure class="media-left">
+      <div class="columns is-centered is-mobile is-vcentered">
+        <div class="column has-text-centered pr-3 pl-3">
+          <div class="image is-32x32">
+            <img src="https://bulma.io/images/placeholders/64x64.png" class="is-rounded">
+          </div> 
+        </div>
+      </div>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+          <%= comment.content %>
+          <%= form_with(model: [comment, Comment.new]) do |f| %>
+            <%= f.text_field :content, placeholder: "Write a reply..." %>
+          <% end %>
+      </div>
       <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<%# <li> %>
+    <%#= comment.content %>
+    <%#= form_with(model: [comment, Comment.new]) do |f| %>
+      <%#= f.text_field :content, placeholder: "Write a reply..." %>
+    <%# end %>
+  <%# <ul> %>
+      <%#= render partial: 'comments/comment', collection: comment.comments %>
+  <%# </ul> %>
 
     <%#= render 'comments/form', collection: comment.comments %>
-</li>
+<%# </li> %>

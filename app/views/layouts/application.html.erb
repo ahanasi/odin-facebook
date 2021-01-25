@@ -91,9 +91,13 @@
     <section class="section">
       <div class="container">
         <div class="columns is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
-          <%= render "layouts/sidebar" %>
-          <%= yield %>
-          <%= render "layouts/potential_friends" %>
+          <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
+            <%= render "layouts/sidebar" %>
+            <%= yield %>
+            <%= render "layouts/potential_friends" %>
+          <% else %>
+            <%= yield %>
+          <% end %>
         </div>
       </div>
     </section>
