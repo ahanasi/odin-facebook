@@ -1,6 +1,0 @@
-<% if @post.valid? %>
-  Turbolinks.clearCache()
-  Turbolinks.visit("<%= message_path(@message) %>", { action: "replace" })
-<% else %>
-  $("form").replaceWith("<%=j render "form" %>")
-<% end %>

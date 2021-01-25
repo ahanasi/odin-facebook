@@ -1,4 +1,4 @@
-require "pry"
+require 'pry'
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   helper :friendships
@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.relevant_posts.sort_by{|e| e[:updated_at]}.reverse! 
+    @posts = current_user.relevant_posts.sort_by { |e| e[:updated_at] }.reverse!
     @post = Post.new
     @users = User.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
   end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
