@@ -97,7 +97,7 @@
             <%= render "layouts/potential_friends" %>
           <% else %>
             <%= yield %>
-          <% end %>
+          <% end %> 
         </div>
       </div>
     </section>
@@ -131,6 +131,15 @@
 
       return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
     }
+    
+    
+    
+
+    $('a.reply-button').click(function() {
+      var id = $(this).attr('id');
+      var suffix = id.match(/\d+/);
+      $('#replyDiv'+suffix).css("display", "block");
+    });
 
   </script>
 </html>

@@ -25,5 +25,12 @@
     background-color: whitesmoke;
     cursor: pointer;
  }
+ article.media.reply-article {
+    border-top: 0px;
+    height: 3em;
+ }
+ div.reply-div {
+    display: none;
+ }
 
  @import "bulma"; 

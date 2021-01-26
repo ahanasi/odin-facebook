@@ -10,10 +10,33 @@
     </figure>
     <div class="media-content">
       <div class="content">
+        <p class="has-background-light p-2 mb-0" style="border-radius: 15px">
+          <strong><small><%= comment.user.name %></small></strong>
+          <br>
           <%= comment.content %>
-          <%= form_with(model: [comment, Comment.new]) do |f| %>
-            <%= f.text_field :content, placeholder: "Write a reply..." %>
-          <% end %>
+          <br>
+        </p>
+        <small><a>Like</a> · <a id="replyButton<%= comment.id %>" class="reply-button" data-turbolinks="false">Reply</a> · <%= short_age_string(comment.updated_at) %></small>
+        <div id="replyDiv<%= comment.id%>" class="reply-div">
+          <article class="media reply-article">
+            <figure class="media-left mr-2 ml-0">
+              <div class="columns is-centered is-mobile is-vcentered">
+                <div class="column has-text-centered pr-3 pl-3">
+                  <div class="image is-24x24">
+                    <img src="https://bulma.io/images/placeholders/64x64.png" class="is-rounded">
+                  </div> 
+                </div>
+              </div>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <%= form_with(model: [comment, Comment.new]) do |f| %>
+                  <%= f.text_field :content, class: "input is-small is-rounded", placeholder: "Write a reply..." %>
+                <% end %>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
       <%= render partial: 'comments/comment', collection: comment.comments %>
     </div>
