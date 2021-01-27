@@ -32,5 +32,24 @@
  div.reply-div {
     display: none;
  }
+ a.has-text-grey:hover{
+    text-decoration: underline;
+ }
+ #commentCount {
+    text-align: right;
+ }
+ article.media + article.media {
+   padding-top: 0.5rem;
+   border-top: 0;
+   margin-top: 0;
+ }
+ article.media article.media {
+   padding-top: 0.5rem;
+   border-top: 0;
+   margin-top: 0;
+ }
+ #likeReplyBar {
+    font-size: 12px;
+ }
 
  @import "bulma"; 

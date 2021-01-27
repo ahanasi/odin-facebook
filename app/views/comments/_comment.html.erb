@@ -16,7 +16,7 @@
           <%= comment.content %>
           <br>
         </p>
-        <small><a>Like</a> · <a id="replyButton<%= comment.id %>" class="reply-button" data-turbolinks="false">Reply</a> · <%= short_age_string(comment.updated_at) %></small>
+        <small id="likeReplyBar"><a>Like</a> · <a id="replyButton<%= comment.id %>" class="reply-button" data-turbolinks="false">Reply</a> · <%= short_age_string(comment.updated_at) %></small>
         <div id="replyDiv<%= comment.id%>" class="reply-div">
           <article class="media reply-article">
             <figure class="media-left mr-2 ml-0">
