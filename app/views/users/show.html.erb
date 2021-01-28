@@ -1,39 +1,19 @@
-<%= @user.name %>
-<%= @user.email %>
+<div class="column is-6">
+  <div class="hero-body">
+      <div class="container has-text-centered">
+        
+          <div class="box">
+            <figure class="avatar">
+                <img src="https://bulma.io/images/placeholders/256x256.png">
+            </figure>
+            <h1 class="title"><%= @user.name %></h1>
+            <h2 class="subtitle is-6">I only check Facebook once a week; don't expect fast responses. I hate hate hate Facebook.</h2>
+          </div>
+      </div>
+  </div>
+</div>
 
-<h1>Pending Friends</h1>
-<br>
-<table>
-<% @user.pending_friends.each do |pending_friend| %>
-<tr>
-    <td><%= link_to pending_friend.name, user_path(pending_friend) %></td>
-    <td><%= link_to "Cancel request", cancel_friendships_path(name: pending_friend.name), controller: "friendships", action: "cancel", method: :delete %></td>
-</tr>
-<% end %>
-</table>
-<br>
-<br>
 
-<h1>Requested Friends</h1>
-<br>
-<table>
-<% @user.requested_friends.each do |requester| %>
-<tr>
-    <td><%= link_to requester.name, user_path(requester) %></td>
-    <td><%= link_to "Accept", accept_friendships_path(name: requester.name), controller: "friendships", action: "accept", method: :put %> / <%= link_to "Decline", decline_friendships_path(name: requester.name), controller: "friendships", action: "decline", method: :delete %>
-</tr>
-<% end %>
-</table>
 
-<br>
-<br>
 
-<h1>Accepted Friends</h1>
-<table>
-<% @user.friends.each do |friend| %>
-<tr>
-    <td><%= link_to friend.name, user_path(friend) %></td>
-    <td><%= link_to "Unfriend", delete_friendships_path(name: friend.name) %></td>
-</tr>
-<% end %>
-</table>
+
