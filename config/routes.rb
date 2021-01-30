@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :posts
+      get :friends
+      get :requests
     end
   end
   root 'posts#index'

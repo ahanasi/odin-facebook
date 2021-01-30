@@ -1,0 +1,47 @@
+<div class="column is-6">
+  <h1 class="title">Friend Requests</h1>
+  <% @user.requested_friends.each_slice(2) do |requester_a, requester_b| %>
+    <div class="columns is-6">
+      <div class="column">
+        <article class="media box">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/64x64.png" class="is-rounded">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= link_to requester_a.name, user_path(requester_a) %></strong>
+              </p>
+              <p>
+                <%= link_to "Accept", accept_friendships_path(name: requester_a.name), controller: "friendships", action: "accept", method: :put %> / <%= link_to "Decline", decline_friendships_path(name: requester_a.name), controller: "friendships", action: "decline", method: :delete %>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="column">
+        <% unless requester_b.nil? %>
+          <article class="media box">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="https://bulma.io/images/placeholders/64x64.png" class="is-rounded">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= link_to requester_b.name, user_path(requester_b) %></strong>
+                </p>
+                <p>
+                  <%= link_to "Accept", accept_friendships_path(name: requester_b.name), controller: "friendships", action: "accept", method: :put %> / <%= link_to "Decline", decline_friendships_path(name: requester_b.name), controller: "friendships", action: "decline", method: :delete %>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
