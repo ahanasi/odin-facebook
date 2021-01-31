@@ -8,9 +8,13 @@ class UsersController < ApplicationController
     @posts = @user.posts.sort_by { |e| e[:updated_at] }.reverse!
   end
 
-  def friends; end
+  def friends
+    @disable_friends_sidebar = true
+  end
 
-  def requests; end
+  def requests
+    (redirect_to root_path, alert: "That Page Isn't Available") unless @user == current_user
+  end
 
   private
 

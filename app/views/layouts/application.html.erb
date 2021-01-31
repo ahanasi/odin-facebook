@@ -94,7 +94,7 @@
           <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
             <%= render "layouts/sidebar" %>
             <%= yield %>
-            <%= render "layouts/potential_friends" %>
+            <%= render "layouts/potential_friends" unless @disable_friends_sidebar %>
           <% else %>
             <%= yield %>
           <% end %> 

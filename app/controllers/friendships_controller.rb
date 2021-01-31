@@ -1,35 +1,35 @@
 require 'pry'
 class FriendshipsController < ApplicationController
-  before_action :set_friend, only: %i[create accept decline cancel]
+  before_action :set_friend, only: %i[create accept decline cancel delete]
 
   def create
     Friendship.request(current_user, @friend)
     flash[:notice] = 'Friend request sent.'
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def accept
     Friendship.accept(current_user, @friend)
     flash[:notice] = 'Friend request accepted.'
-    redirect_to user_path(current_user)
+    redirect_to requests_user_path(current_user)
   end
 
   def decline
     Friendship.breakup(current_user, @friend)
     flash[:notice] = 'Friend request declined.'
-    redirect_to user_path(current_user)
+    redirect_to requests_user_path(current_user)
   end
 
   def cancel
     Friendship.breakup(current_user, @friend)
     flash[:notice] = 'Friend request canceled.'
-    redirect_to user_path(current_user)
+    redirect_to requests_user_path(current_user)
   end
 
   def delete
-    Friendship.breakup(@user, @friend)
+    Friendship.breakup(current_user, @friend)
     flash[:notice] = "You are not friends with #{@friend.name} anymore."
-    redirect_to user_path(current_user)
+    redirect_to friends_user_path(current_user)
   end
 
   private

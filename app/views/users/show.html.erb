@@ -12,6 +12,19 @@
             <p><i class="fas fa-map-marker-alt"></i> From <strong>New York</strong></p>
             <p><i class="fas fa-clock"></i> Joined February 2009</p>
           </div>
+          <% unless Friendship.exists?(current_user, @user) || current_user == @user %>
+            <div class="box">
+              <h1 class="title is-5">Do you know <%= @user.name %>? </h1>
+              <div class="columns is-vcentered">
+                <div class="div column is-9 pl-3">
+                  <p class="subtitle is-6">To see what they share with friends, send them a friend request.</p>
+                </div>
+                <div class="column">
+                  <%= link_to "Add Friend", friendships_path(name: @user.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
           <%= render "shared/all_posts" %>
       </div>
   </div>
