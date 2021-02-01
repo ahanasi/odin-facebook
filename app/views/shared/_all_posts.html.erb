@@ -40,26 +40,43 @@
       <% end %>
     </article>
     <p class="pb-1"><%= post.content %></p>
-    <% unless post.comments.count == 0 %>
-      <p id="commentCount">
-        <small>
-          <%= link_to post_path(post), class: "has-text-grey" do %>
-            <%= post.comments.count %>
-            <% if post.comments.count > 1 %>
-              Comments
-            <% else %>
-              Comment
+    <nav class="level mt-1 mb-1">
+      <% if post.likes.count != 0 %>
+        <div class="level-left">
+          <small class="level-item has-text-grey"><i class="far fa-thumbs-up fa-fw has-text-info-dark "></i><%= post.likes.count %></small>
+        </div>
+      <% else %>
+        <small>    </small>
+      <% end %>
+      <% unless post.comments.count == 0 %>
+        <div class="level-right">
+          <small class="level-item">
+            <%= link_to post_path(post), class: "has-text-grey" do %>
+              <%= post.comments.count %>
+              <% if post.comments.count > 1 %>
+                Comments
+              <% else %>
+                Comment
+              <% end %>
             <% end %>
-          <% end %>
-        </small>
-      </p>
-    <% end %>
+          </small>
+        </div>
+      <% end %>
+    </nav>
     <hr class="m-1">
     <div class="field is-grouped mb-0">
-      <a class="button is-white is-fullwidth">
-        <span><i class="far fa-thumbs-up has-text-grey-dark"></i></span>  
-        <span class="pl-2 has-text-grey-dark">Like</span>
-      </a>
+      <% if already_liked?(post) %>
+        <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+        <%= link_to post_like_path(post, pre_like), method: :delete, class: "button is-white is-fullwidth" do %>
+          <span><i class="fas fa-thumbs-up has-text-info-dark"></i></span>  
+          <span class="pl-2 has-text-info-dark">Like</span>
+        <% end %>
+      <% else %>
+        <%= link_to post_likes_path(post), method: :post, class: "button is-white is-fullwidth" do %>
+          <span><i class="far fa-thumbs-up has-text-grey-dark"></i></span>  
+          <span class="pl-2 has-text-grey-dark">Like</span>
+        <% end %>
+      <% end %>
       <%= link_to post_path(post), class: "button is-white is-fullwidth" do %>
         <span><i class="far fa-comment-alt has-text-grey-dark"></i></span>
         <span class="pl-2 has-text-grey-dark">Comment</span>

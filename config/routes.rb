@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts do
     resources :comments
+    resources :likes
   end
   resources :comments do
     resources :comments
