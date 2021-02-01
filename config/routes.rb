@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :comments do
     resources :comments
+    resources :likes
   end
   resources :friendships, only: [:create] do
     collection do
