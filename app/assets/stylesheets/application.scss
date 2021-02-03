@@ -62,5 +62,15 @@
    -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
  }
+ .badge {
+   position: absolute;
+   top: 2px;
+   right: 1px;
+   padding: 1px 5px;
+   border-radius: 50%;
+   background: rgb(236, 1, 1);
+   color: white;
+   font-size: 10px;
+ }
 
  @import "bulma"; 
