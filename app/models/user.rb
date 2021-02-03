@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :pending_friends, -> { Friendship.pending }, through: :friendships, source: :friend
   has_many :requested_friends, -> { Friendship.requested }, through: :friendships, source: :friend
 
+  has_one_attached :avatar
+
   def relevant_posts
     relevant_posts = []
     friends.each do |f|
