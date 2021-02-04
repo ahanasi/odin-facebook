@@ -32,7 +32,7 @@
               <div class="buttons">
                 <%= link_to current_user, class: "button is-rounded pl-3 pr-3", data: { turbolinks: false } do %>
                   <figure class="image is-24x24 mr-2 ml-0">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                    <%= image_tag user_avatar(current_user,300), class: "is-rounded" %>
                   </figure>  
                   <%= current_user.name %>
                 <% end %>

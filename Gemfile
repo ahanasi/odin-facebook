@@ -33,6 +33,8 @@ gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 gem 'figaro', '~> 1.2'
 gem 'devise'
 gem 'faker', '~> 2.15', '>= 2.15.1' 
+gem 'image_processing'
+gem 'gravatar_image_tag', '~> 1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

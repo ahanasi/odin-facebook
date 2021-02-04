@@ -9,11 +9,9 @@
 
     <div class="field">
       <div class="control">
-        <% if resource.avatar.attached? %>
-          <%= image_tag resource.avatar.variant(resize: "100x100!"), class: "is-rounded" %>
-        <% else %>
-          <img src="https://bulma.io/images/placeholders/64x64.png" height="100" width="100" class="is-rounded">
-        <% end %>
+          <figure class="image is-128x128"> 
+            <%= image_tag user_avatar(resource,300), class: "is-rounded" %>
+          </figure>
         <%= f.file_field :avatar %>
       </div>
     </div>

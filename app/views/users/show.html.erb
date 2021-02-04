@@ -3,7 +3,7 @@
       <div class="container">
           <div class="box has-text-centered">
             <figure class="avatar">
-                <img src="https://bulma.io/images/placeholders/256x256.png">
+                <%= image_tag user_avatar(@user,256), class: "is-rounded" %>
             </figure>
             <h1 class="title"><%= @user.name %></h1>
             <h2 class="subtitle is-6">I only check Facebook once a week; don't expect fast responses. I hate hate hate Facebook.</h2>
