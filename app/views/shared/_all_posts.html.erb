@@ -40,6 +40,11 @@
       <% end %>
     </article>
     <p class="pb-1"><%= post.content %></p>
+    <% if post.image.attached? %>
+      <figure class="image is-square">
+        <img src="<%= (url_for(post.image)) %>" alt="Post Image">
+      </figure>
+    <% end %>
     <nav class="level mt-1 mb-1">
       <% if post.likes.count != 0 %>
         <div class="level-left">
