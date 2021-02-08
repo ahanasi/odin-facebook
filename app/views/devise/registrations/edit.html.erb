@@ -7,12 +7,25 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
+    <div class="field is-grouped is-grouped-centered">
       <div class="control">
-          <figure class="image is-128x128"> 
+          <figure id="avatarImg" class="image is-128x128"> 
             <%= image_tag user_avatar(resource,300), class: "is-rounded" %>
+            <div class="middle">
+              <label for="upload" class="custom-file-upload">
+                  <i class="fas fa-edit"></i></i>
+              </label>
+            </div>
           </figure>
-        <%= f.file_field :avatar %>
+          <figure class="avatar-preview image is-128x128" style="display: none;" id="avatarPreview">
+            <img class="is-rounded" width="300" />
+            <div class="middle">
+              <label for="upload" class="custom-file-upload">
+                  <i class="fas fa-edit"></i></i>
+              </label>
+            </div>
+          </figure>
+          <%= f.file_field :avatar, id: "upload", class: "file" %>
       </div>
     </div>
 

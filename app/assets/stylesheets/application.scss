@@ -97,5 +97,40 @@ input[type="file"] {
    z-index: 3 !important;
    background-color: lightgray !important;
 }
+#avatarImg:hover img {
+   opacity: 0.5;
+ }
+ .middle {
+   transition: .5s ease;
+   opacity: 0;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   -ms-transform: translate(-50%, -50%);
+   text-align: center;
+ }
+ #avatarImg image {
+   opacity: 1;
+   display: block;
+   width: 100%;
+   height: auto;
+   transition: .5s ease;
+   backface-visibility: hidden;
+ }
+ #avatarImg:hover .middle {
+   opacity: 1;
+ }
+ #avatarPreview image{
+   opacity: 1;
+   display: block;
+   width: 100%;
+   height: auto;
+   transition: .5s ease;
+   backface-visibility: hidden;
+ }
+ #avatarPreview:hover .middle{
+   opacity: 1;
+ }
 
 @import "bulma";

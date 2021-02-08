@@ -131,21 +131,25 @@
     });
 
     $(function(){
-    var preview = $("figure.upload-preview img");
+      var preview = $("figure.upload-preview img");
+      var avatarPreview = $("#avatarPreview img")
 
-    $(".file").on('change', function(event){
-      $('#imageContainer').hide();
-      $('#uploadPreview').show();
+      $(".file").on('change', function(event){
+        $('#imageContainer').hide();
+        $('#avatarImg').hide();
+        $('#avatarPreview').show();
+        $('#uploadPreview').show();
 
-      var input = $(event.currentTarget);
-      var file = input[0].files[0];
-      var reader = new FileReader();
-      reader.onload = function(e){
-          image_base64 = e.target.result;
-          preview.attr("src", image_base64);
-      };
-      reader.readAsDataURL(file);
-    });
+        var input = $(event.currentTarget);
+        var file = input[0].files[0];
+        var reader = new FileReader();
+        reader.onload = function(e){
+            image_base64 = e.target.result;
+            preview.attr("src", image_base64);
+            avatarPreview.attr("src", image_base64);
+        };
+        reader.readAsDataURL(file);
+      });
   });
 
   </script>
