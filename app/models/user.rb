@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
   has_many :friendships
   has_many :friends, -> { Friendship.accepted }, through: :friendships
   has_many :pending_friends, -> { Friendship.pending }, through: :friendships, source: :friend

@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts do
+  concern :commentable do
     resources :comments
     resources :likes
   end
+  resources :posts, concerns: :commentable
+  resources :comments, concerns: :commentable
+
   resources :posts, only: %i[edit] do
-    member do
-      delete :delete_image_attachment
-    end
+    delete 'delete_image_attachment', on: :member
   end
-  resources :comments do
-    resources :comments
-    resources :likes
-  end
+
   resources :friendships, only: [:create] do
     collection do
       put :accept
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
       get :posts
       get :friends
       get :requests
+      get :liked_posts
     end
   end
   root 'posts#index'

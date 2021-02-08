@@ -1,0 +1,7 @@
+<div class="column is-6">
+   <% if !@posts.empty? %>
+    <%= render "shared/all_posts" %>
+   <% else %>
+     <h2 class="subtitle has-text-centered p-5">You have not liked any posts.</h2>
+   <% end %> 
+</div>

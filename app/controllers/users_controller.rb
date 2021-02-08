@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show posts friends requests]
+  before_action :set_user
   def show
     @posts = @user.posts.sort_by { |e| e[:updated_at] }.reverse!
   end
@@ -14,6 +14,10 @@ class UsersController < ApplicationController
 
   def requests
     (redirect_to root_path, alert: "That Page Isn't Available") unless @user == current_user
+  end
+
+  def liked_posts
+    @posts = @user.liked_posts.sort_by { |e| e[:updated_at] }.reverse!
   end
 
   private
