@@ -1,42 +1,46 @@
 <div class="column is-3">
-  <aside class="menu">
+  <aside class="menu potential-friends">
     <p class="menu-label">
       People You May Know
     </p>
     <ul class="menu-list">
       <% friend_reqs.each do |user| %>
-        <li class="p-3">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <%= image_tag user_avatar(user,300), class: "is-rounded" %>
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong><%= user.name %></strong>
-                </p>
-                <p>
-                  <small><%= friendship_status(@current_user, user) %></small>
-                </p>
-                <p>
-                  <%= link_to "Add Friend", friendships_path(name: user.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
-                </p>
+        <li class="p-2">
+          <form method="get" action="/users/<%= user.id %>">
+              <button type="submit" class="has-background-light potential-friend-button">
+                <article class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <%= image_tag user_avatar(user,300), class: "is-rounded" %>
+                </figure>
               </div>
-            </div>
-          </article>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong class="title is-6"><%= user.name %></strong>
+                  </p>
+                  <p>
+                    <small><%= friendship_status(@current_user, user) %></small>
+                  </p>
+                  <p>
+                    <%= link_to "Add Friend", friendships_path(name: user.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
+                  </p>
+                </div>
+              </div>
+            </article>
+          </button>
+          </form>          
         </li>
       <% end %>
     </ul>
-    <hr>
+    <hr id="menuHR">
     <p class="menu-label">
       Contacts
     </p>
     <ul class="menu-list">
       <% current_user.friends.each do |user| %>
         <li class="pt-2 pb-2">
-          <%= link_to user_path(user), data: { turbolinks: false } do %>
+          <%= link_to user_path(user), data: { turbolinks: false }, class: "pt-0" do %>
           <article class="media">
             <div class="media-left">
               <figure class="image is-48x48 mt-2">

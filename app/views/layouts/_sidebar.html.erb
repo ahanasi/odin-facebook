@@ -1,18 +1,78 @@
 <div class="column is-3">
   <aside class="menu">
-    <p class="menu-label">
-      Main Resources
-    </p>
     <ul class="menu-list">
-        <li>Test 1</li>
-        <li>Test 2</li>
-    </ul>
-    <p class="menu-label">
-      Other Resources
-    </p>
-    <ul class="menulist">
-        <li>Test 3</li>
-        <li>Test 4</li>
+      <li class="pt-2 pb-2">
+        <%= link_to current_user, data: { turbolinks: false }, class: "pt-0" do %>
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-48x48 mt-2">
+                <%= image_tag user_avatar(current_user,300), class: "is-rounded" %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-0 mt-2 pb-0"><%= current_user.name %></strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
+      <li class="pt-2 pb-2">
+        <%= link_to root_path do %>
+          <article class="media">
+            <div class="media-left">
+                <span class="icon">
+                  <i class="fas fa-newspaper fa-lg pt-4 pl-2 has-text-link"></i>
+                </span>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-5">News Feed</strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
+      <li class="pt-2 pb-2">
+        <%= link_to friends_user_path(current_user) do %>
+          <article class="media">
+            <div class="media-left">
+                <span class="icon">
+                  <i class="fas fa-user-friends fa-lg pt-4 pl-2 has-text-info"></i>
+                </span>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-5">Friends</strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
+      <li class="pt-2 pb-2">
+        <%= link_to friends_user_path(current_user) do %>
+          <article class="media">
+            <div class="media-left">
+                <span class="icon">
+                  <i class="fas fa-heart fa-lg pt-4 pl-2 has-text-danger"></i>
+                </span>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-5">Liked Posts</strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
     </ul>
   </aside>
 </div>

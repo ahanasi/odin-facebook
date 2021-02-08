@@ -1,7 +1,7 @@
 module ApplicationHelper
   include LikesHelper
   def friend_reqs
-    @users = User.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
+    @users = User.with_attached_avatar.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
   end
 
   def user_avatar(user, size = 40)

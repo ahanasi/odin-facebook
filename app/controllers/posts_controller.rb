@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
     @posts = current_user.relevant_posts.sort_by { |e| e[:updated_at] }.reverse!
     @post = Post.new
-    @users = User.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
+    @users = User.with_attached_avatar.all_except(current_user).reject { |u| Friendship.exists?(current_user, u) }.sample(3)
   end
 
   # GET /posts/1
@@ -71,7 +71,7 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.with_attached_image.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
