@@ -1,6 +1,6 @@
 require 'pry'
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy delete_image_attachment]
   helper :friendships
 
   # GET /posts
@@ -62,6 +62,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def delete_image_attachment
+    @post.image.purge
+    redirect_to edit_post_path(@post)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +76,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:content,:image,:delete_image)
+    params.require(:post).permit(:content, :image, :delete_image)
   end
 end

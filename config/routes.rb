@@ -3,6 +3,11 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
+  resources :posts, only: %i[edit] do
+    member do
+      delete :delete_image_attachment
+    end
+  end
   resources :comments do
     resources :comments
     resources :likes

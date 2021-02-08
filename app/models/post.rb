@@ -1,8 +1,6 @@
 class Post < ApplicationRecord
   include ActionView::Helpers::DateHelper
 
-  before_validation { image.purge if @delete_image }
-
   belongs_to :user
   has_many :comments, as: :commentable
   has_many :likes, as: :likeable, dependent: :destroy
@@ -18,13 +16,5 @@ class Post < ApplicationRecord
     else
       updated_at.strftime('%B %d at%l:%M%P')
     end
-  end
-
-  def delete_image
-    @delete_image ||= false
-  end
-
-  def delete_image=(value)
-    @delete_image = !value.to_i.zero?
   end
 end

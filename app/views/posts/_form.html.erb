@@ -1,18 +1,20 @@
 <%= form_with(model: @post, id: "new-post-form") do |form| %>
   <div class="field">
     <div class="control">
-      <%= form.text_area :content, required: true, id: 'post-input', class: 'textarea p-0 mb-5', rows: "5", placeholder: "What's on your mind, #{current_user.name}?" %>
+      <%= form.text_area :content, required: true, id: 'post-input', class: 'textarea p-0 mb-5', rows: "3", placeholder: "What's on your mind, #{current_user.name}?" %>
     </div> 
-    <% if @post.image.attached? %>
-      <%= image_tag @post.image %><br/>
-      <%= form.check_box :delete_image %>Delete Image<br/>
-    <% end %>
-    
     <div class="control">
       <%= form.file_field :image, id: "upload", class: "file" %>
-      <div class="upload-preview">
-        <img  />
-      </div>
     </div>
   </div>
+  <% if @post.image.attached? %>
+    <div class="container" id="imageContainer">
+      <figure class="image is-square mb-2 mr-0 ml-0 pl-0 lr-0 back-element">
+        <%= image_tag @post.image %><br/>
+      </figure>
+      <%= link_to delete_image_attachment_post_path, method: :delete do %>
+      <button class="delete is-medium front-element"></button>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

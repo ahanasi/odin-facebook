@@ -6,9 +6,11 @@ modal.find(".modal-background").click(function(e){
   modal.removeClass('is-active');
 });
 
-var preview = $(".upload-preview img");
+$(function(){
+  var preview = $("figure.upload-preview img");
 
-$(".file").change(function(event){
+  $(".file").on('change', function(event){
+    $('#uploadPreview').show();
     var input = $(event.currentTarget);
     var file = input[0].files[0];
     var reader = new FileReader();
@@ -17,4 +19,5 @@ $(".file").change(function(event){
         preview.attr("src", image_base64);
     };
     reader.readAsDataURL(file);
+  });
 });

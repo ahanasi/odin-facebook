@@ -1,68 +1,69 @@
- $menu-label-font-size: 1.1em;
- $menu-item-radius: 5px;
- .menu {
-    position: sticky;
-    display: inline-block;
-    vertical-align: top;
-    max-height: 100vh;
-    overflow-y: auto;
-    top: 0;
-    bottom: 0;
- }
- #post-input {
-    border: none;
-    border-color: transparent;
-    box-shadow: none;
- }
- html, body {
+$menu-label-font-size: 1.1em;
+$menu-item-radius: 5px;
+.menu {
+   position: sticky;
+   display: inline-block;
+   vertical-align: top;
+   max-height: 100vh;
+   overflow-y: auto;
+   top: 0;
+   bottom: 0;
+}
+#post-input {
+   border: none;
+   border-color: transparent;
+   box-shadow: none;
+}
+html,
+body {
    height: 100vh;
- }
- button.dropdown-item {
-    background-color: white;
-    border: none;
- }
- button.dropdown-item:hover{
-    background-color: whitesmoke;
-    cursor: pointer;
- }
- article.media.reply-article {
-    border-top: 0px;
-    height: 3em;
- }
- div.reply-div {
-    display: none;
- }
- a.has-text-grey:hover{
-    text-decoration: underline;
- }
- article.media + article.media {
+}
+button.dropdown-item {
+   background-color: white;
+   border: none;
+}
+button.dropdown-item:hover {
+   background-color: whitesmoke;
+   cursor: pointer;
+}
+article.media.reply-article {
+   border-top: 0px;
+   height: 3em;
+}
+div.reply-div {
+   display: none;
+}
+a.has-text-grey:hover {
+   text-decoration: underline;
+}
+article.media + article.media {
    padding-top: 0.5rem;
    border-top: 0;
    margin-top: 0;
- }
- article.media article.media {
+}
+article.media article.media {
    padding-top: 0.5rem;
    border-top: 0;
    margin-top: 0;
- }
- #likeReplyBar {
-    font-size: 12px;
- }
- #likeOnComment {
-    margin-top: -15px;
- }
- .avatar {
+}
+#likeReplyBar {
+   font-size: 12px;
+}
+#likeOnComment {
+   margin-top: -15px;
+}
+.avatar {
    margin-top: -100px;
    padding-bottom: 20px;
- }
- .avatar img {
+}
+.avatar img {
    padding: 5px;
    background: #fff;
    border-radius: 50%;
-   -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-   box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
- }
- .badge {
+   -webkit-box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+.badge {
    position: absolute;
    top: 2px;
    right: 1px;
@@ -71,6 +72,30 @@
    background: rgb(236, 1, 1);
    color: white;
    font-size: 10px;
+}
+input[type="file"] {
+   display: none;
+}
+.custom-file-upload {
+   display: inline-block;
+   cursor: pointer;
+   margin-left: 5px;
+   margin-top: 7px;
+}
+#imageContainer {
+   position: relative;
+   right: 6%;
  }
+.back-element {
+   position: relative;
+   z-index: 1;
+}
+.front-element {
+   position: absolute !important;
+   top: 5px !important;
+   right: 5px !important;
+   z-index: 3 !important;
+   background-color: lightgray !important;
+}
 
- @import "bulma"; 
+@import "bulma";

@@ -15,7 +15,13 @@
         </p>
     </div>      
   </article>
-  <div class="field">
-    <input type="submit" name="commit" value="Post" data-disable-with="Post" form="new-post-form" class="button is-fullwidth is-link">
+  <figure class="upload-preview image is-square mb-2" style="display: none;" id="uploadPreview">
+    <img  />
+  </figure>
+  <div class="field is-grouped">
+    <input type="submit" name="commit" value="Post" data-disable-with="Post" form="new-post-form" class="button is-fullwidth is-link mt-1">
+    <label for="upload" class="custom-file-upload">
+        <i class="far fa-file-image has-text-primary fa-2x"></i>
+    </label>
   </div>
 </div>
