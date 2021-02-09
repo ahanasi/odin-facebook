@@ -31,10 +31,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bulma-rails', '~> 0.9.1'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 gem 'figaro', '~> 1.2'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise'
 gem 'faker', '~> 2.15', '>= 2.15.1' 
 gem 'image_processing'
 gem 'gravatar_image_tag', '~> 1.2'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

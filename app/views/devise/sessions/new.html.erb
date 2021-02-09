@@ -42,6 +42,9 @@
           <div class="control">
               <%= link_to "Create an Account", new_user_registration_path, class: "button is-fullwidth is-info" %>
           </div>
+          <div class="control">
+            <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
+          </div>
         </div>
       </div>
     </div>
