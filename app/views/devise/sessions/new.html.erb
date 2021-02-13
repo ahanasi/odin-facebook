@@ -39,18 +39,15 @@
               </div>              
             <% end %>
           <hr class="login-hr has-background-grey-lighter" style="height: 1px;">
-          <div class="control">
+          <div class="control mb-3">
               <%= link_to "Create an Account", new_user_registration_path, class: "button is-fullwidth is-info" %>
           </div>
-          <div class="control">
-            <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
-            <a class="button is-medium">
-              <span class="icon">
-                <i class="fab fa-google"></i>
-              </span>
-              <span>GitHub</span>
-            </a>
-          </div>
+          <%= link_to user_google_oauth2_omniauth_authorize_path, class: "button is-fullwidth", method: :post do %>
+            <span class="icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" id="googleBtn" alt="Google sign-in">
+            </span>
+            <span style="font-family: 'Roboto', sans-serif;">Sign in with Google</span>
+          <% end %>
         </div>
       </div>
     </div>

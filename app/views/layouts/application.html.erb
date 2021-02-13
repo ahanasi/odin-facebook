@@ -3,7 +3,6 @@
   <head>
     <title>Farcebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -79,9 +78,8 @@
       </div>
     </section>
   </body>
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script>
-     
+
     var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
     if ($dropdowns.length > 0) {
