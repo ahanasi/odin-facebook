@@ -153,5 +153,11 @@ input[type="file"] {
 #avatarPreview:hover .middle {
    opacity: 1;
 }
+.tabs {
+   border-top: solid 1px hsl(0, 0%, 86%);
+   font-weight: 600;
+}
+$tabs-border-bottom-color: white;
+
 
 @import "bulma";

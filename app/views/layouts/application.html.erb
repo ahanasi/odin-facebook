@@ -3,6 +3,7 @@
   <head>
     <title>Farcebook</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -67,7 +68,7 @@
     <section class="section">
       <div class="container">
         <div class="columns is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
-          <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
+          <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' && !(controller_name == "users" && action_name == "show") %>
             <%= render "layouts/sidebar" %>
             <%= yield %>
             <%= render "layouts/potential_friends" unless @disable_friends_sidebar %>
@@ -78,6 +79,7 @@
       </div>
     </section>
   </body>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script>
      
     var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
@@ -150,7 +152,28 @@
         };
         reader.readAsDataURL(file);
       });
-  });
-
+    });
+    const tabSystem = {
+      init(){
+        document.querySelectorAll('.tabs-menu').forEach(tabMenu => {
+            Array.from(tabMenu.children).forEach((child, ind) => {
+                child.addEventListener('click', () => {
+                    tabSystem.toggle(child.dataset.target);
+                });
+                if(child.className.includes('is-active')){
+                    tabSystem.toggle(child.dataset.target);
+                }
+            });
+        });
+      },
+      toggle(targetId){
+          document.querySelectorAll('.tab-content').forEach(contentElement=>{
+              contentElement.style.display = contentElement.id === targetId ? 'block' : 'none';
+              document.querySelector(`[data-target="${contentElement.id}"]`).classList[contentElement.id === targetId ? 'add' : 'remove']('is-active');
+          })
+      },
+    };
+    // use it
+    tabSystem.init()
   </script>
 </html>

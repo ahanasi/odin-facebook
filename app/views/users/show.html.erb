@@ -1,18 +1,23 @@
-<div class="column is-6">
+<div class="column is-8 is-offset-2">
   <div class="hero-body">
-      <div class="container">
-          <div class="box has-text-centered">
-            <figure class="avatar">
-                <%= image_tag user_avatar(@user,256), class: "is-rounded" %>
-            </figure>
-            <h1 class="title"><%= @user.name %></h1>
-            <h2 class="subtitle is-6">I only check Facebook once a week; don't expect fast responses. I hate hate hate Facebook.</h2>
-            <p><i class="fas fa-graduation-cap"></i> Studied at Symbiosis Law School</p>
-            <p><i class="fas fa-home"></i> Lives in <strong>San Francisco, California</strong></p>
-            <p><i class="fas fa-map-marker-alt"></i> From <strong>New York</strong></p>
-            <p><i class="fas fa-clock"></i> Joined February 2009</p>
-          </div>
-          <% unless Friendship.exists?(current_user, @user) || current_user == @user %>
+    <div class="container">
+      <div class="box has-text-centered">
+        <figure class="avatar">
+            <%= image_tag user_avatar(@user,256), class: "is-rounded" %>
+        </figure>
+        <h1 class="title"><%= @user.name %></h1>
+        <h2 class="subtitle is-6">I only check Facebook once a week; don't expect fast responses. I hate hate hate Facebook.</h2>
+        <div class="tabs is-centered">
+          <ul class="tabs-menu">
+            <li class="is-active" data-target="posts-tab"><a>Posts</a></li>
+            <li data-target="about-tab"><a>About</a></li>
+            <li data-target="friends-tab"><a>Friends</a></li>
+            <li data-target="photos-tab"><a>Photos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-content" id="posts-tab">
+        <% unless Friendship.exists?(current_user, @user) || current_user == @user %>
             <div class="box">
               <h1 class="title is-5">Do you know <%= @user.name %>? </h1>
               <div class="columns is-vcentered">
@@ -27,6 +32,13 @@
           <% end %>
           <%= render "shared/all_posts" %>
       </div>
+      <div class="tab-content box has-text-centered" id="about-tab">
+        <%= render "about" %>
+      </div>
+      <div class="tab-content box has-text-centered" id="friends-tab">
+        <%= render "friend_list" %>
+      </div>
+    </div>
   </div>
 </div>
 
