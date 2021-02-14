@@ -112,6 +112,16 @@
   </body>
   <script>
 
+    document.addEventListener('DOMContentLoaded', function() {
+      let cardToggles = document.getElementsByClassName('card-toggle');
+      for (let i = 0; i < cardToggles.length; i++) {
+        cardToggles[i].addEventListener('click', e => {
+          e.currentTarget.parentElement.parentElement.childNodes[3].classList.toggle('is-hidden');
+        });
+      }
+    });
+
+
     var $dropdowns = getAll('.dropdown:not(.is-hoverable)');
 
     if ($dropdowns.length > 0) {
@@ -183,6 +193,7 @@
         reader.readAsDataURL(file);
       });
     });
+    
     const tabSystem = {
       init(){
         document.querySelectorAll('.tabs-menu').forEach(tabMenu => {

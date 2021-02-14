@@ -6,7 +6,7 @@
             <%= image_tag user_avatar(@user,256), class: "is-rounded" %>
         </figure>
         <h1 class="title"><%= @user.name %></h1>
-        <h2 class="subtitle is-6">Insert tagline here</h2>
+        <h2 class="subtitle is-6"><%= @user.bio %></h2>
         <div class="tabs is-centered">
           <ul class="tabs-menu">
             <li class="is-active" data-target="posts-tab"><a>Posts</a></li>
@@ -42,7 +42,7 @@
           </div>
         <% end %>
       </div>
-      <div class="tab-content box has-text-centered" id="about-tab">
+      <div class="tab-content box" id="about-tab">
         <%= render "about" %>
       </div>
       <div class="tab-content box has-text-centered" id="friends-tab">

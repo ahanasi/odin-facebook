@@ -1,4 +1,28 @@
-<p><i class="fas fa-graduation-cap"></i> Studied at Symbiosis Law School</p>
-<p><i class="fas fa-home"></i> Lives in <strong>San Francisco, California</strong></p>
-<p><i class="fas fa-map-marker-alt"></i> From <strong>New York</strong></p>
-<p><i class="fas fa-clock"></i> Joined February 2009</p>
+<% if @user.city %>
+  <p class="pb-2">
+    <span class="icon"><i class="fas fa-home"></i></span>
+    <span>Lives in <strong><%= @user.city %></strong></span>
+  </p>
+<% end %>
+<% if @user.workplace %>
+  <p class="pb-2">
+    <span class="icon"><i class="fas fa-briefcase"></i></span>
+    <span>Software Engineer at <strong><%= @user.workplace %></strong></span>
+  </p>
+<% end %>
+<% if @user.school %>
+  <p class="pb-2">
+    <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+    <span>Studied at <%= @user.school %></span>
+  </p>
+<% end %>
+<% if @user.hometown %>
+  <p class="pb-2">
+    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+    <span>From <strong><%= @user.hometown %></strong></span>
+  </p>
+<% end %>
+<p class="pb-2">
+  <span class="icon"><i class="fas fa-clock"></i></span> 
+  <span>Joined February 2009</span>
+</p>
