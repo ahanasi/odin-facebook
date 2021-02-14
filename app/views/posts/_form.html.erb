@@ -1,7 +1,7 @@
 <%= form_with(model: @post, id: "new-post-form") do |form| %>
   <div class="field">
     <div class="control">
-      <%= form.text_area :content, required: true, id: 'post-input', class: 'textarea p-0 mb-5', rows: "3", placeholder: "What's on your mind, #{current_user.name}?" %>
+      <%= form.text_area :content, required: true, id: 'post-input', class: 'textarea p-0 mb-5', rows: "3", placeholder: "What's on your mind, #{current_user.name.strip.split(/\s+/)[0]}?" %>
     </div> 
     <div class="control">
       <%= form.file_field :image, id: "upload", class: "file" %>
