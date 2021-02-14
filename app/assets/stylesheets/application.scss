@@ -162,6 +162,9 @@ $tabs-border-bottom-color: white;
    margin-right: 1rem;
    width: 20px;
 }
-
+#newPostDiv {
+   max-height: 95vh;
+   overflow-y: auto;
+}
 
 @import "bulma";

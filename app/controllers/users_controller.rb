@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user
   def show
-    @posts = @user.posts.sort_by { |e| e[:updated_at] }.reverse!
+    @posts = @user.posts.with_attached_image.sort_by { |e| e[:updated_at] }.reverse!
+    @photos = @user.photos.sort_by { |e| e[:created_at] }.reverse!
   end
 
   def posts
@@ -18,6 +19,10 @@ class UsersController < ApplicationController
 
   def liked_posts
     @posts = @user.liked_posts.sort_by { |e| e[:updated_at] }.reverse!
+  end
+
+  def photos
+    @photos = @user.photos.sort_by { |e| e[:created_at] }.reverse!
   end
 
   private

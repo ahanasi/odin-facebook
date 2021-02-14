@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get :friends
       get :requests
       get :liked_posts
+      get :photos
     end
   end
   root 'posts#index'

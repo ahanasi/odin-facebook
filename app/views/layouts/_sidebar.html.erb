@@ -73,6 +73,24 @@
           </article>
         <% end %>
       </li>
+      <li class="pt-2 pb-2">
+        <%= link_to photos_user_path(current_user) do %>
+          <article class="media">
+            <div class="media-left">
+                <span class="icon">
+                  <i class="fas fa-photo-video fa-lg pt-4 pl-2 has-text-primary"></i>
+                </span>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-5">Photos</strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
     </ul>
   </aside>
 </div>

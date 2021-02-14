@@ -1,0 +1,11 @@
+<div class="column is-6">
+   <% if !@photos.empty? %>
+    <%= render "photo_list" %>
+   <% else %>
+    <% if @user == current_user %>
+      <h2 class="subtitle has-text-centered p-5">You have not posted any photos yet.</h2>
+    <% else %>
+      <h2 class="subtitle has-text-centered p-5">This user has not posted any photos yet.</h2>
+    <% end %>
+   <% end %> 
+</div>

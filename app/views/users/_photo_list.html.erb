@@ -1,0 +1,20 @@
+<% @photos.each_slice(2) do |photo_1, photo_2| %>
+    <div class="columns is-1 is-variable is-vcentered">
+    <div class="column">
+        <figure class="image">
+        <%= link_to post_path(photo_1.record_id), data: {turbolinks: false} do %>
+            <%= image_tag(photo_1) %>
+        <% end %>
+        </figure>
+    </div>
+    <div class="column">
+        <% unless photo_2.nil? %>
+        <figure class="image">
+        <%= link_to post_path(photo_2.record_id), data: {turbolinks: false} do %>
+            <%= image_tag(photo_2) %>
+        <% end %>
+        </figure>
+        <% end %>
+    </div>
+    </div>
+<% end %>

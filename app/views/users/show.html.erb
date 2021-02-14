@@ -6,7 +6,7 @@
             <%= image_tag user_avatar(@user,256), class: "is-rounded" %>
         </figure>
         <h1 class="title"><%= @user.name %></h1>
-        <h2 class="subtitle is-6">I only check Facebook once a week; don't expect fast responses. I hate hate hate Facebook.</h2>
+        <h2 class="subtitle is-6">Insert tagline here</h2>
         <div class="tabs is-centered">
           <ul class="tabs-menu">
             <li class="is-active" data-target="posts-tab"><a>Posts</a></li>
@@ -18,25 +18,54 @@
       </div>
       <div class="tab-content" id="posts-tab">
         <% unless Friendship.exists?(current_user, @user) || current_user == @user %>
-            <div class="box">
-              <h1 class="title is-5">Do you know <%= @user.name %>? </h1>
-              <div class="columns is-vcentered">
-                <div class="div column is-9 pl-3">
-                  <p class="subtitle is-6">To see what they share with friends, send them a friend request.</p>
-                </div>
-                <div class="column">
-                  <%= link_to "Add Friend", friendships_path(name: @user.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
-                </div>
+          <div class="box">
+            <h1 class="title is-5">Do you know <%= @user.name %>? </h1>
+            <div class="columns is-vcentered">
+              <div class="div column is-10 pl-3">
+                <p class="subtitle is-6">To see what they share with friends, send them a friend request.</p>
+              </div>
+              <div class="column">
+                <%= link_to "Add Friend", friendships_path(name: @user.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
               </div>
             </div>
-          <% end %>
+          </div>
+        <% end %>
+        <% if @user.posts.exists? %>
           <%= render "shared/all_posts" %>
+        <% else %>
+          <div class="box has-text-centered">
+            <% if @user == current_user %>
+              <p>You do not have any posts yet.</p>
+            <% else %>
+              <p>This user does not have any posts yet.</p>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="tab-content box has-text-centered" id="about-tab">
         <%= render "about" %>
       </div>
       <div class="tab-content box has-text-centered" id="friends-tab">
-        <%= render "friend_list" %>
+        <% if @user.friends.exists? %>
+          <%= render "friend_list" %>
+        <% else %>
+          <% if @user == current_user %>
+            <p>You have not added any friends yet.</p>
+          <% else %>
+            <p>This user has not added any friends yet.</p>
+          <% end %>
+        <% end %>
+      </div>
+       <div class="tab-content box has-text-centered" id="photos-tab">
+        <% if !@photos.empty? %>
+          <%= render "photo_list" %>
+        <% else %>
+          <% if @user == current_user %>
+            <p>You have not posted any photos yet.</p>
+          <% else %>
+            <p>This user has not posted any photos yet.</p>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
