@@ -36,7 +36,7 @@
                   </figure>  
                   <%= current_user.name %>
                 <% end %>
-                <%= link_to requests_user_path(current_user ), class: "button is-white", data: { turbolinks: false } do %>
+                <%= link_to requests_user_path(current_user ), class: "button is-light is-rounded", data: { turbolinks: false } do %>
                   <span class="icon">
                     <i class="fas fa-bell"></i>
                     <% unless current_user.requested_friends.empty? %>
@@ -44,7 +44,39 @@
                     <% end %>
                   </span>
                 <% end %>
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "button is-info" %>
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="button is-light is-rounded">
+                    <span class="icon">
+                      <i class="fas fa-caret-down"></i>
+                    </span>
+                  </a>
+                  <div class="navbar-dropdown is-right">
+                    <%= link_to current_user, data: { turbolinks: false }, class: "navbar-item" do %>
+                      <article class="media">
+                        <div class="media-left">
+                          <figure class="image is-48x48 ml-1">
+                            <%= image_tag user_avatar(current_user, 300), class: "is-rounded navbar-profile-img" %>
+                          </figure>
+                        </div>
+                        <div class="media-content">
+                              <strong><%= current_user.name %></strong>
+                              <br />
+                              <small>See your profile</small>
+                          </div>
+                      </article>
+                    <% end %>
+                    <hr class="navbar-divider">
+                    <%= link_to edit_user_registration_path, data: { turbolinks: false }, class: "navbar-item" do %>
+                      <span class="icon is-medium mr-3 ml-3"><i class="fas fa-user-edit fa-lg"></i></span>
+                      <span class="is-size-6">Edit Profile</span>
+                    <% end %>
+                    <%= link_to destroy_user_session_path, method: :delete, data: { turbolinks: false }, class: "navbar-item" do %>
+                      <span class="icon is-medium mr-3 ml-3"><i class="fas fa-sign-out-alt fa-lg"></i></span>
+                      <span class="is-size-6">Log Out</span>
+                    <% end %>
+                  </div>
+                </div>
+                <%# <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "button is-info" %>
               </div>
             </div>
           </div>

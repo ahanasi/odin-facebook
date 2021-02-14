@@ -166,5 +166,8 @@ $tabs-border-bottom-color: white;
    max-height: 95vh;
    overflow-y: auto;
 }
+.navbar-profile-img.is-rounded {
+   max-height: none;
+}
 
 @import "bulma";
