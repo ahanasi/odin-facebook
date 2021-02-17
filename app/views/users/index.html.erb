@@ -1,0 +1,67 @@
+<div class="column is-6">
+    <h1 class="title">All Users</h1>
+    <% @users.each_slice(2) do |friend_a, friend_b| %>
+    <div class="columns is-6">
+      <div class="column">
+        <article class="media box columns is-vcentered mt-2 mb-2">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <%= image_tag user_avatar(friend_a,300), class: "is-rounded" %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong><%= link_to friend_a.name, user_path(friend_a), data: { turbolinks: false } %></strong>
+              </p>
+            </div>
+          </div>
+          <div class="media-right">
+            <% if Friendship.exists?(current_user, friend_a) && current_user != friend_a %>
+              <% friendship = Friendship.find_by_user_id_and_friend_id(current_user, friend_a) %>
+              <% if friendship.status == 'Pending' %>
+              <% elsif friendship.status == 'Accepted' %>
+                <p>
+                  <%= link_to "Unfriend", delete_friendships_path(name: friend_a.name), controller: "friendships", action: "delete", method: :delete, class: "button is-small is-link" %>
+                </p>
+              <% end %>
+            <% else %>
+              <%= link_to "Add Friend", friendships_path(name: friend_a.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
+            <% end %>
+          </div>
+        </article>
+      </div>
+      <div class="column">
+        <% unless friend_b.nil? %>
+          <article class="media box columns is-vcentered mt-2 mb-2">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <%= image_tag user_avatar(friend_b,300), class: "is-rounded" %>
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><%= link_to friend_b.name, user_path(friend_b), data: { turbolinks: false } %></strong>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <% if Friendship.exists?(current_user, friend_b) && current_user != friend_b %>
+                <% friendship = Friendship.find_by_user_id_and_friend_id(current_user, friend_b) %>
+                <% if friendship.status == 'Pending' %>
+                <% elsif friendship.status == 'Accepted' %>
+                  <p>
+                    <%= link_to "Unfriend", delete_friendships_path(name: friend_b.name), controller: "friendships", action: "delete", method: :delete, class: "button is-small is-link" %>
+                  </p>
+                <% end %>
+              <% else %>
+                <%= link_to "Add Friend", friendships_path(name: friend_b.name), controller: "friendships", action: "create", method: :post, class: "button is-small is-link" %>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

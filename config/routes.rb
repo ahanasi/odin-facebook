@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: %i[show edit update] do
+  resources :users, only: %i[show edit update index] do
     member do
       get :posts
       get :friends

@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:index]
   def show
     @posts = @user.posts.with_attached_image.sort_by { |e| e[:updated_at] }.reverse!
     @photos = @user.photos.sort_by { |e| e[:created_at] }.reverse!
   end
 
   def index
-    @users = User.all.with_attached_avatar
+    @users = User.all.with_attached_avatar.all_except(current_user)
+    @user = current_user
   end
 
   def posts
