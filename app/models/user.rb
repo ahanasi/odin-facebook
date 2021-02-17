@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   scope :all_except, ->(user) { where.not(id: user) }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :photos, through: :posts, source: :image_attachment
   has_many :comments
   has_many :likes, dependent: :destroy
