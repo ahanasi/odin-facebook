@@ -31,6 +31,10 @@ class User < ApplicationRecord
     relevant_posts
   end
 
+  def join_date
+    created_at.strftime('%B %Y')
+  end
+
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first

@@ -5,15 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
-User.delete_all
 
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+# Create users with female names
+25.times do |i|
 end
 
-User.create :name => "Tester Joe", :email => "test@example.com", :password => "password"
-1...10.times do |i|
-    User.create :name => Faker::Name.name, :email => Faker::Internet.email, :password => "user123"
-end
-
+# Create users with male names

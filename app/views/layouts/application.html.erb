@@ -12,7 +12,7 @@
 
   <body>
 
-    <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' %>
+    <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' && controller_name != 'passwords' %>
       <nav class="navbar columns m-1" role="navigation" aria-label="main navigation">
         <div class="navbar-brand column is-2">
           <%= link_to root_path, class: "navbar-item", data: { turbolinks: false } do %>
@@ -99,7 +99,7 @@
     <section class="section">
       <div class="container">
         <div class="columns is-variable is-2-mobile is-0-tablet is-3-desktop is-8-widescreen is-1-fullhd">
-          <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' && !(controller_name == "users" && action_name == "show") %>
+          <% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'static' && controller_name != 'passwords' && !(controller_name == "users" && action_name == "show") %>
             <%= render "layouts/sidebar" %>
             <%= yield %>
             <%= render "layouts/potential_friends" unless @disable_friends_sidebar %>
