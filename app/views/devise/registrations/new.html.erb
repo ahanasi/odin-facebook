@@ -1,34 +1,146 @@
-<h2>Sign up</h2>
+<div class="column is-offset-4 is-5">
+  <div class="box">
+    <h1 class="title is-4 has-text-centered">Sign Up</h1>
+    <hr class="login-hr has-background-grey-lighter" style="height: 1px;">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <figure id="avatarImg" class="image is-128x128"> 
+            <%= image_tag user_avatar(resource,300), class: "is-rounded" %>
+            <div class="middle">
+              <label for="upload" class="custom-file-upload">
+                  <i class="fas fa-edit"></i></i>
+              </label>
+            </div>
+          </figure>
+          <figure class="avatar-preview image is-128x128" style="display: none;" id="avatarPreview">
+            <img class="is-rounded" width="300" />
+            <div class="middle">
+              <label for="upload" class="custom-file-upload">
+                  <i class="fas fa-edit"></i></i>
+              </label>
+            </div>
+          </figure>
+          <%= f.file_field :avatar, id: "upload", class: "file" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "input" %>
+      </div>
+    </div>
+
+    <div class="card is-fullwidth">
+			<header class="card-header">
+				<p class="card-header-title">Bio</p>
+				<a class="card-header-icon card-toggle">
+					<i class="fa fa-angle-down"></i>
+				</a>
+			</header>
+			<div class="card-content is-hidden">
+				<div class="content">
+          <div class="field">
+            <div class="control">
+              <%= f.text_area :bio, autofocus: true, placeholder: "Describe yourself", class: "textarea", rows: "2" %>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+
+    <div class="card is-fullwidth">
+			<header class="card-header">
+				<p class="card-header-title">Customize Your Intro</p>
+				<a class="card-header-icon card-toggle">
+					<i class="fa fa-angle-down"></i>
+				</a>
+			</header>
+			<div class="card-content is-hidden">
+				<div class="content">
+					<div class="field">
+            <div class="control has-icons-left">
+              <%= f.text_field :city, autofocus: true, placeholder: "Current City", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-home"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control has-icons-left">
+              <%= f.text_field :workplace, autofocus: true, placeholder: "Workplace", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-briefcase"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control has-icons-left">
+              <%= f.text_field :school, autofocus: true, placeholder: "School", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-graduation-cap"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control has-icons-left">
+              <%= f.text_field :hometown, autofocus: true, placeholder: "Hometown", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control has-icons-left">
+              <%= f.text_field :rel_status, autofocus: true, placeholder: "Relationship Status", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-heart"></i>
+              </span>
+            </div>
+          </div>
+				</div>
+			</div>
+		</div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "input" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em class="help">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "input" %>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= f.submit "Sign Up", class: "button is-link" %>
+      </div>
+      <div class="control">
+        <%= link_to "Cancel", root_path, { :class => "button is-link is-light" } %>
+      </div>
+    </div>
+  <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  

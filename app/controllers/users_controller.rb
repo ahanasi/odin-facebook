@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @photos = @user.photos.sort_by { |e| e[:created_at] }.reverse!
   end
 
+  def index
+    @users = User.all.with_attached_avatar
+  end
+
   def posts
     @posts = @user.posts.sort_by { |e| e[:updated_at] }.reverse!
   end

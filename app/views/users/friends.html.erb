@@ -1,7 +1,7 @@
 <div class="column is-8">
   <% if @user.friends.exists? %>
     <h1 class="title">Friends</h1>
-    <%= render 'friend_list' %>
+    <%= render partial: 'friend_list' %>
   <% else %>
     <% if @user == current_user %>
       <h2 class="subtitle has-text-centered p-5">You have not added any friends yet.</h2>
