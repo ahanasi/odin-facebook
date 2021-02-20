@@ -109,32 +109,35 @@
 				</div>
 			</div>
 		</div>
-
-    <div class="field">
+    <% unless current_user.id == 1 %>
+      <div class="field">
       <div class="control">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "input" %>
       </div>
-    </div>
+      </div>
+    
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="field">
+        <div class="control">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "New Password", class: "input" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em class="help"><%= @minimum_password_length %> characters minimum, Leave blank if unchanged </em>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "input" %>
+        </div>
+      </div>
+
     <% end %>
 
-    <div class="field">
-      <div class="control">
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "New Password", class: "input" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em class="help"><%= @minimum_password_length %> characters minimum, Leave blank if unchanged </em>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password confirmation", class: "input" %>
-      </div>
-    </div>
 
     <div class="field">
       <div class="control">
