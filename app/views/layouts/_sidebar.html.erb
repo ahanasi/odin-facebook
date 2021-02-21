@@ -91,6 +91,24 @@
           </article>
         <% end %>
       </li>
+      <li class="pt-2 pb-2">
+        <%= link_to users_path, data: { turbolinks: false } do %>
+          <article class="media">
+            <div class="media-left">
+                <span class="icon">
+                  <i class="fas fa-user-plus fa-lg pt-4 pl-2 has-text-info-dark"></i>
+                </span>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong class="column pl-5">All Users</strong>
+                </p>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </li>
     </ul>
   </aside>
 </div>

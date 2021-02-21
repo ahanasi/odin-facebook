@@ -72,6 +72,16 @@
 
           <div class="field">
             <div class="control has-icons-left">
+              <%= f.text_field :occupation, autofocus: true, placeholder: "Occupation", class: "input" %>
+              <span class="icon is-small is-left">
+                <i class="fas fa-user-astronaut"></i>
+              </span>
+            </div>
+          </div>
+
+
+          <div class="field">
+            <div class="control has-icons-left">
               <%= f.text_field :workplace, autofocus: true, placeholder: "Workplace", class: "input" %>
               <span class="icon is-small is-left">
                 <i class="fas fa-briefcase"></i>

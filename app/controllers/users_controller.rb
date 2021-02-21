@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.with_attached_avatar.all_except(current_user)
+    @users = User.all_except(current_user).with_attached_avatar
     @user = current_user
   end
 

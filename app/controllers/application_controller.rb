@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name avatar bio city school workplace hometown rel_status])
+    devise_parameter_sanitizer.permit(:sign_up,
+                                      keys: %i[name avatar bio city school occupation workplace hometown rel_status])
     devise_parameter_sanitizer.permit(:account_update,
-                                      keys: %i[name avatar bio city school workplace hometown rel_status])
+                                      keys: %i[name avatar bio city school occupation workplace hometown rel_status])
   end
 end
