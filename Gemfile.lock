@@ -1162,6 +1162,8 @@ GEM
     ffi (1.14.2)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
+    font-awesome-rails (4.7.0.6)
+      railties (>= 3.2, < 6.2)
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -1393,6 +1395,7 @@ DEPENDENCIES
   devise!
   faker!
   figaro (~> 1.2)
+  font-awesome-rails
   gravatar_image_tag (~> 1.2)
   guard (~> 2.16, >= 2.16.2)
   guard-livereload (~> 2.5, >= 2.5.2)

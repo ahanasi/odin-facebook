@@ -40,6 +40,7 @@ gem 'omniauth-rails_csrf_protection'
 gem "letter_opener", :group => :development
 gem 'sendgrid-ruby'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1', require: false
+gem "font-awesome-rails"
 
 
 group :development, :test do
