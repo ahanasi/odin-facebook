@@ -1,12 +1,12 @@
 <% unless @user.city.blank? %>
   <p class="pb-2">
-    <span class="icon"><i class="fas fa-home"></i></span>
+    <span class="icon"><i class="fa fa-home"></i></span>
     <span>Lives in <strong><%= @user.city %></strong></span>
   </p>
 <% end %>
 <% unless @user.workplace.blank? %>
   <p class="pb-2">
-    <span class="icon"><i class="fas fa-briefcase"></i></span>
+    <span class="icon"><i class="fa fa-briefcase"></i></span>
     <% if !@user.occupation.blank? %>
       <span><%= @user.occupation %> at <strong><%= @user.workplace %></strong></span>
     <% else %>
@@ -16,17 +16,17 @@
 <% end %>
 <% unless @user.school.blank? %>
   <p class="pb-2">
-    <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+    <span class="icon"><i class="fa fa-graduation-cap"></i></span>
     <span>Studied at <%= @user.school %></span>
   </p>
 <% end %>
 <% unless @user.hometown.blank? %>
   <p class="pb-2">
-    <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+    <span class="icon"><i class="fa fa-map-marker"></i></span>
     <span>From <strong><%= @user.hometown %></strong></span>
   </p>
 <% end %>
 <p class="pb-2">
-  <span class="icon"><i class="fas fa-clock"></i></span> 
+  <span class="icon"><i class="fa fa-clock-o"></i></span> 
   <span>Joined <%= @user.join_date() %></span>
 </p>
