@@ -39,6 +39,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem "letter_opener", :group => :development
 gem 'sendgrid-ruby'
+gem 'aws-sdk-s3', require: false
 
 
 group :development, :test do
