@@ -1,3 +1,5 @@
+require 'sendgrid-ruby'
+include SendGrid
 class UserNotifierMailer < ApplicationMailer
   default from: 'odinflights@gmail.com'
 
