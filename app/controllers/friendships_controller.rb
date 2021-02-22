@@ -1,4 +1,3 @@
-require 'pry'
 class FriendshipsController < ApplicationController
   before_action :set_friend, only: %i[create accept decline cancel delete]
 

@@ -1,4 +1,3 @@
-require "pry"
 class LikesController < ApplicationController
   # before_action :set_post
   before_action :find_likeable

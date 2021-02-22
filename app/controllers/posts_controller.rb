@@ -1,4 +1,3 @@
-require 'pry'
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy delete_image_attachment]
   helper :friendships

@@ -1,4 +1,3 @@
-require 'pry'
 class CommentsController < ApplicationController
   before_action :find_commentable, only: :create
 
