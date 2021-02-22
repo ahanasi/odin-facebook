@@ -1,6 +1,9 @@
 $menu-label-font-size: 1.1em;
 $menu-item-radius: 5px;
 $menu-item-hover-background-color: rgb(224, 222, 222);
+i.fa { 
+   font-family:FontAwesome!important; 
+}
 .menu.potential-friends {
    position: sticky;
    display: inline-block;
