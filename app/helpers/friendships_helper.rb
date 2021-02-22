@@ -9,5 +9,5 @@ module FriendshipsHelper
     when 'Accepted'
       'Request Accepted'
     end
-  end    
+  end
 end

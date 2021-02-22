@@ -38,6 +38,7 @@ gem 'gravatar_image_tag', '~> 1.2'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem "letter_opener", :group => :development
+gem 'sendgrid-ruby'
 
 
 group :development, :test do

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       delete :delete
     end
   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: %i[show edit update index] do
     member do
       get :posts
